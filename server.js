@@ -10,6 +10,10 @@ const upload = multer({ dest: "uploads/" });
 
 app.use(express.json());
 
+app.get('/', (req,res)=>{
+    res.send("API para convertir archivos Word a PDF");
+});
+
 app.post("/convert", upload.single("file"), (req, res) => {
   try {
     const wordFilePath = req.file.path; // Ruta temporal del archivo subido
